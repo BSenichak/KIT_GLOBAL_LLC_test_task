@@ -1,0 +1,31 @@
+services:
+    backend:
+        build:
+            context: ./
+            target: dev
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./:/app
+            - node_modules_backend:/app/node_modules
+        depends_on:
+            - db
+        environment:
+            MONGO_URI: mongodb://user:password@db:27017/mydb
+            SECRET: secret
+
+    db:
+        image: mongo:latest
+        ports:
+            - "27017:27017"
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: user
+            MONGO_INITDB_ROOT_PASSWORD: password
+            MONGO_INITDB_DATABASE: mydb
+        volumes:
+            - mongo_data:/data/db
+
+volumes:
+    mongo_data:
+    node_modules_backend:
+    node_modules_frontend:
