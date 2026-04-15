@@ -24,7 +24,6 @@
   },
   "watchOptions": {
     "watchFile": "fixedPollingInterval",
-    "watchDirectory": "fixedPollingInterval",
-    "pollInterval": 500
+    "watchDirectory": "fixedPollingInterval"
   }
 }
