@@ -1,6 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { UserService } from './user.service';
-import { RegisterDto } from './entities/User.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @ApiTags('Users')
@@ -12,13 +11,6 @@ export class UserController {
     @ApiResponse({ status: 200, description: 'list of users' })
     @Get()
     getUsers() {
-        return this.userService.findAll()
-    }
-
-    @ApiOperation({ summary: 'create a new user' })
-    @ApiResponse({ status: 200, description: 'User created' })
-    @Post("register")
-    addOneUser(@Body() data: RegisterDto) {
-        return this.userService.register(data)
+        return this.userService.findAll();
     }
 }
